@@ -40,26 +40,25 @@
 <li><a href="../modules/br.player.equiped.html">br.player.equiped</a></li>
 <li><a href="../modules/br.player.essence.html">br.player.essence</a></li>
 <li><a href="../modules/br.player.has.html">br.player.has</a></li>
-<li><strong>br.player.known</strong></li>
+<li><a href="../modules/br.player.known.html">br.player.known</a></li>
 <li><a href="../modules/br.player.module.html">br.player.module</a></li>
 <li><a href="../modules/br.player.power.html">br.player.power</a></li>
 <li><a href="../modules/br.player.talent.html">br.player.talent</a></li>
 <li><a href="../modules/br.player.ui.html">br.player.ui</a></li>
-<li><a href="../modules/br.player.units.html">br.player.units</a></li>
+<li><strong>br.player.units</strong></li>
 <li><a href="../modules/br.player.use.html">br.player.use</a></li>
 </ul>
 </div>
 <div id="content">
-<h1>Module <code>br.player.known</code></h1>
-<p>These functions help in retrieving information about spell knowledge.</p>
+<h1>Module <code>br.player.units</code></h1>
+<p>This function helps in retrieving the "best" unit for the specified range and AOE/Facing.</p>
 <p>
- Known functions are stored in br.player.known and can be utilized by `local known = br.player.known` in your profile.
- For spell known, `spell` in the function represent the name in the actions list (Spec, Shared Class, Shared Global Lists) defined in System/List/Spells.lua</p>
+ Units functions are stored in br.player.units and can be utilized by `local units = br.player.units` in your profile.</p>
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 <tr>
-<td class="name" nowrap=""><a href="#spell">known.spell ()</a></td>
-<td class="summary">Checks if spell is known or not.</td>
+<td class="name" nowrap=""><a href="#get">units.get (range)</a></td>
+<td class="summary">Gets the "best" unit within a specified range in front or around the player.</td>
 </tr>
 </table>
 <br/>
@@ -67,18 +66,22 @@
 <h2 class="section-header"><a name="Functions"></a>Functions</h2>
 <dl class="function">
 <dt>
-<a name="spell"></a>
-<strong>known.spell ()</strong>
+<a name="get"></a>
+<strong>units.get (range)</strong>
 </dt>
 <dd>
-    Checks if spell is known or not.
+    Gets the "best" unit within a specified range in front or around the player.
+ Call once per profile rotation and use the variable it creates in br.player.units
+ IE: units.get(5,false) makes units.dyn5, units.get(8,true) makes units.dyn8AOE
 
 
-
-    <h3>Returns:</h3>
-<ol>
-<span class="types"><span class="type">boolean</span></span>
-</ol>
+    <h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">range</span>
+<span class="types"><span class="type">number</span></span>
+         - Distance in yards to look for the "best" unit
+        </li>
+</ul>
 </dd>
 </dl>
 </div> <!-- id="content" -->

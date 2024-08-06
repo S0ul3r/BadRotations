@@ -1,3 +1,4 @@
+---@diagnostic disable: param-type-mismatch, undefined-global
 --------------------------------------------------------------------------------------------------------------------------------
 -- unlockList
 --------------------------------------------------------------------------------------------------------------------------------
@@ -55,7 +56,7 @@ local unlockList =
 	"PickupCompanion",
 	"PickupMacro",
 	"PickupPetAction",
-	"PickupSpell",
+	"C_Spell.PickupSpell",
 	"PickupSpellBookItem",
 	"Quit",
 	"ReplaceEnchant",
@@ -129,7 +130,7 @@ local globalCacheList =
 	"GetUnitName",
 	"InitiateTrade",
 	"IsItemInRange",
-	-- "IsSpellInRange",
+	-- "C_Spell.IsSpellInRange",
 	"PitchDownStart",
 	"PitchDownStop",
 	"PitchUpStart",
@@ -145,7 +146,7 @@ local globalCacheList =
 	"SummonFriend",
 	"SwapRaidSubgroup",
 	"ToggleGameMenu",
-	"ToggleSpellAutocast",
+	"C_Spell.ToggleSpellAutoCast",
 	"TraceLine",
 	-- "UnitAffectingCombat",
 	"UnitArmor",
@@ -450,7 +451,6 @@ function br.unlock:NNUnlock()
 	b.GetKeyState = GetKeyState
 	b.UnitFacing = b.ObjectFacing
 	b.ObjectInteract = b.InteractUnit
-	b.IsHackEnabled = function(...) return false end
 	b.AuraUtil = {}
 	b.AuraUtil.FindAuraByName = function(name, unit, filter)
 		-- return Eval("AuraUtil.FindAuraByName("..table.concat({...}, ", ")..")", "")
@@ -484,7 +484,7 @@ function br.unlock:NNUnlock()
 		return GetUnitSpeed(ObjectUnit(...))
 	end
 	b.InSpellInRange = function(spell, unit)
-		return IsSpellInRange(spell, ObjectUnit(unit))
+		return C_Spell.IsSpellInRange(spell, ObjectUnit(unit))
 	end
 	b.UnitAffectingCombat = function(...)
 		return UnitAffectingCombat(ObjectUnit(...))
